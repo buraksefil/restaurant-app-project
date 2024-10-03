@@ -1,0 +1,58 @@
+services:
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_SERVER_URL=http://backend
+    networks:
+      - frontend
+
+  auth:
+    build:
+      context: ./backend/auth
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    networks:
+      - backend
+    environment:
+      - PORT=3001
+
+  discounts:
+    build:
+      context: ./backend/discounts
+      dockerfile: Dockerfile
+    ports:
+      - "3002:3002"
+    networks:
+      - backend
+    environment:
+      - PORT=3002
+
+  items:
+    build:
+      context: ./backend/items
+      dockerfile: Dockerfile
+    ports:
+      - "3003:3003"
+    networks:
+      - backend
+    environment:
+      - PORT=3003
+
+  haproxy:
+    image: haproxy:alpine
+    volumes:
+      - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
+    ports:
+      - "80:80"
+    networks:
+      - frontend
+      - backend
+
+networks:
+  frontend:
+  backend:
