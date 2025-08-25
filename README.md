@@ -1,34 +1,33 @@
-Restaurant App Project
+# 🍽️ Restaurant App Project
 
-A simple restaurant web application with a frontend, backend API, and reverse proxy using Docker Compose and HAProxy.
+A simple **restaurant web application** built with **Docker Compose** and **HAProxy**, combining a frontend, backend API, and reverse proxy under one setup.
 
-🚀 Stack
+---
 
-Frontend: SPA (client)
+## 🚀 Tech Stack
+- **Frontend:** SPA (client)  
+- **Backend:** REST API (backend)  
+- **Proxy:** HAProxy for unified access (`/` → frontend, `/api` → backend)  
+- **Orchestration:** Docker Compose  
 
-Backend: REST API (backend)
+---
 
-Proxy: HAProxy for / (frontend) and /api (backend)
+## ▶️ Getting Started
+Run the full stack with a single command:
 
-Orchestration: Docker Compose
-
-▶️ Run Locally
+```bash
 docker compose up --build
 
+📂 Project Structure
 
-Frontend: http://localhost
-
-API: http://localhost/api
-
-🧩 Project Structure
 restaurant-app-project/
-├─ backend/      # API source
-├─ client/       # Frontend source
-├─ haproxy.cfg   # Reverse proxy config
+├─ backend/       # API source code
+├─ client/        # Frontend source code
+├─ haproxy.cfg    # Reverse proxy configuration
 └─ docker-compose.yml
 
 📌 Description
 
-What: Built a containerized restaurant web app.
-How: Orchestrated frontend & backend with Docker Compose, configured HAProxy for single-domain access.
-Impact: Simplified local development and deployment with one command, ensuring clean routing and scalability.
+What: Containerized restaurant web app.
+How: Orchestrated frontend & backend with Docker Compose, routed traffic via HAProxy.
+Impact: One-command deployment with clean routing and scalable architecture.
